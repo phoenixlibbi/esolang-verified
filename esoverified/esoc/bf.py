@@ -37,9 +37,11 @@ from .ir import (Arr, Bin, Const, Expr, Idx, If, PrintChar, PrintInt, Program, R
 # ===================================================================== emitter
 
 class Emitter:
-    def __init__(self) -> None:
+    def __init__(self, trick: int = -1) -> None:
         self.code: List[str] = []
         self.pos = 0
+        # 4 contiguous zero cells [f, p, m, z] reserved for ge_const's O(1) zero test
+        self.trick = trick
 
     def at(self, c: int) -> None:
         d = c - self.pos
@@ -112,18 +114,34 @@ def dec_both(e: Emitter, x: int, y: int, k: int, t1: int, t2: int, t3: int) -> N
 
 
 def ge_const(e: Emitter, v: int, c: int, out: int, s: List[int]) -> None:
-    """out = 1 if byte v >= c else 0 (v unchanged). Uses s[0..4]."""
+    """out = 1 if byte v >= c else 0 (v unchanged), in O(v + c) steps.
+
+    Copies v into p, then c times: if p != 0 decrement it, else raise flag f. The
+    zero test is the classic layout trick on contiguous cells [f, p, m=1, z=0]:
+    ``[->-]>`` leaves the pointer on z when p was nonzero and on m when it was zero,
+    so the following ``[...]`` runs only in the zero case. f = 1 means v < c.
+    Uses s[0..1] as scratch and the emitter's reserved trick cells."""
     if c <= 0:
         set_flag(e, out, 1)
         return
-    x, y, k, t1, t2 = s[:5]
-    e.copy(v, x, t1)
-    e.add(y, c)
-    dec_both(e, x, y, k, t1, t2, out)  # out used as scratch (0 here)
-    e.clear(x)
+    f = e.trick
+    if f < 0:
+        raise RuntimeError("ge_const needs emitter.trick cells")
+    p, m = f + 1, f + 2
+    e.copy(v, p, s[0])
+    e.add(m, 1)
+    b = s[1]
+    e.add(b, c)
+    with e.loop(b):
+        e.add(b, -1)
+        e.at(p)
+        e.raw("[->-]>[<<[-]+>>->]<+<")
+        e.pos = p
+    e.clear(p)
+    e.clear(m)
     set_flag(e, out, 1)
-    with e.loop(y):
-        e.clear(y)
+    with e.loop(f):
+        e.clear(f)
         e.clear(out)
 
 
@@ -243,6 +261,8 @@ class BFCompiler:
             if n in prog.byte_vars:
                 self.bytes[n] = nxt
                 nxt += 1
+        self.e.trick = nxt                # 4 reserved cells for ge_const
+        nxt += 4
         self.free_scratch = list(range(nxt + SCRATCH - 1, nxt - 1, -1))
         nxt += SCRATCH
         self.flag_slots = flag_slots if flag_slots is not None else 1024

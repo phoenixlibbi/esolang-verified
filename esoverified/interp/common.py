@@ -7,6 +7,11 @@ from typing import Optional
 
 DEFAULT_MAX_STEPS = 10_000_000  # the paper's MAX_INTERPRETER_STEPS
 
+# Kept here (not imported from the package) so this directory works standalone inside
+# Harbor task images.
+_ALIASES = {"bf": "brainfuck", "brainfuck": "brainfuck", "b98": "befunge98", "befunge98": "befunge98",
+            "befunge-98": "befunge98", "befunge": "befunge98", "ws": "whitespace", "whitespace": "whitespace"}
+
 
 class EsoError(Exception):
     """A runtime or syntax error raised by a program (not by the interpreter itself)."""
@@ -75,8 +80,9 @@ def run(language: str, program: str, input_data: str = "", *, dialect: str = "of
         max_steps: int = DEFAULT_MAX_STEPS) -> RunResult:
     """Run `program` and capture output or error. Never raises for program faults."""
     from . import bf, b98, ws  # local import: avoid cycles
-    from .. import canonical_language
-    lang = canonical_language(language)
+    lang = _ALIASES.get(language.strip().lower())
+    if lang is None:
+        raise ValueError(f"unknown language {language!r}")
     impl = {"brainfuck": bf, "befunge98": b98, "whitespace": ws}[lang]
     try:
         out, steps = impl.execute(program, input_data, dialect=dialect, max_steps=max_steps)
