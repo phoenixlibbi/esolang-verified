@@ -86,7 +86,19 @@
    "mutation_score_official": 1.0,
    "mutation_score_fresh": 1.0,
    "surviving_mutants": [],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 27
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 339
+    }
+   }
   },
   {
    "pid": "E02",
@@ -109,7 +121,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 2083
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 17517
+    }
+   }
   },
   {
    "pid": "E03",
@@ -159,7 +183,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1079
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 9045
+    }
+   }
   },
   {
    "pid": "E04",
@@ -182,7 +218,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 606
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 11473
+    }
+   }
   },
   {
    "pid": "E05",
@@ -214,7 +262,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 532
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 11819
+    }
+   }
   },
   {
    "pid": "E06",
@@ -255,7 +315,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 393
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 4364
+    }
+   }
   },
   {
    "pid": "E07",
@@ -287,7 +359,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 11138
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 110338
+    }
+   }
   },
   {
    "pid": "E08",
@@ -310,7 +394,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 2737
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 664265
+    }
+   }
   },
   {
    "pid": "E09",
@@ -360,7 +456,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 25238
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 299038
+    }
+   }
   },
   {
    "pid": "E10",
@@ -392,7 +500,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 299
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 8740
+    }
+   }
   },
   {
    "pid": "E11",
@@ -405,7 +525,19 @@
    "mutation_score_official": 1.0,
    "mutation_score_fresh": 1.0,
    "surviving_mutants": [],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 440
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 6093
+    }
+   }
   },
   {
    "pid": "E12",
@@ -428,7 +560,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 541
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 9505
+    }
+   }
   },
   {
    "pid": "E13",
@@ -451,7 +595,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 831
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 12468
+    }
+   }
   },
   {
    "pid": "E14",
@@ -474,7 +630,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 2288
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 662683
+    }
+   }
   },
   {
    "pid": "E15",
@@ -515,7 +683,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1063
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 9042
+    }
+   }
   },
   {
    "pid": "E16",
@@ -547,7 +727,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1293
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 635334
+    }
+   }
   },
   {
    "pid": "E17",
@@ -579,7 +771,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 2133
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 20617
+    }
+   }
   },
   {
    "pid": "E18",
@@ -620,7 +824,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 14438
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 133138
+    }
+   }
   },
   {
    "pid": "E19",
@@ -652,7 +868,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 662
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 12137
+    }
+   }
   },
   {
    "pid": "E20",
@@ -702,7 +930,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 564
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 6555
+    }
+   }
   },
   {
    "pid": "M01",
@@ -752,7 +992,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1464
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 642008
+    }
+   }
   },
   {
    "pid": "M02",
@@ -784,7 +1036,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 26992
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 222105
+    }
+   }
   },
   {
    "pid": "M03",
@@ -825,7 +1089,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 9415
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 823122
+    }
+   }
   },
   {
    "pid": "M04",
@@ -857,7 +1133,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1135
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 8077
+    }
+   }
   },
   {
    "pid": "M05",
@@ -880,7 +1168,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 638
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 12241
+    }
+   }
   },
   {
    "pid": "M06",
@@ -930,7 +1230,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1216
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 20116
+    }
+   }
   },
   {
    "pid": "M07",
@@ -943,7 +1255,19 @@
    "mutation_score_official": 1.0,
    "mutation_score_fresh": 1.0,
    "surviving_mutants": [],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 411
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 10647
+    }
+   }
   },
   {
    "pid": "M08",
@@ -966,7 +1290,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 187014
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 6587664
+    }
+   }
   },
   {
    "pid": "M09",
@@ -998,7 +1334,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 2220
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 80899
+    }
+   }
   },
   {
    "pid": "M10",
@@ -1030,7 +1378,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1718
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 38518
+    }
+   }
   },
   {
    "pid": "M11",
@@ -1071,7 +1431,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 6455
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1282904
+    }
+   }
   },
   {
    "pid": "M12",
@@ -1094,7 +1466,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 6474
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 34733
+    }
+   }
   },
   {
    "pid": "M13",
@@ -1126,7 +1510,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 8740
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 238009
+    }
+   }
   },
   {
    "pid": "M14",
@@ -1139,7 +1535,19 @@
    "mutation_score_official": 1.0,
    "mutation_score_fresh": 1.0,
    "surviving_mutants": [],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 5115
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 113451
+    }
+   }
   },
   {
    "pid": "M15",
@@ -1171,7 +1579,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 5115
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 168484
+    }
+   }
   },
   {
    "pid": "M16",
@@ -1194,7 +1614,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1866
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1289392
+    }
+   }
   },
   {
    "pid": "M17",
@@ -1217,7 +1649,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1787
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 15786
+    }
+   }
   },
   {
    "pid": "M18",
@@ -1240,7 +1684,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 5486
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 65560
+    }
+   }
   },
   {
    "pid": "M19",
@@ -1272,7 +1728,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 2045
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 18626
+    }
+   }
   },
   {
    "pid": "M20",
@@ -1295,7 +1763,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 5396
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 250378
+    }
+   }
   },
   {
    "pid": "H01",
@@ -1327,7 +1807,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 35462
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 298527
+    }
+   }
   },
   {
    "pid": "H02",
@@ -1359,7 +1851,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1631
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 30885
+    }
+   }
   },
   {
    "pid": "H03",
@@ -1400,7 +1904,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 221141
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 7092161
+    }
+   }
   },
   {
    "pid": "H04",
@@ -1441,7 +1957,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 196689
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 6195406
+    }
+   }
   },
   {
    "pid": "H05",
@@ -1464,7 +1992,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 14367
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 458093
+    }
+   }
   },
   {
    "pid": "H06",
@@ -1487,7 +2027,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 9856
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 739059
+    }
+   }
   },
   {
    "pid": "H07",
@@ -1510,7 +2062,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 4432
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1235954
+    }
+   }
   },
   {
    "pid": "H08",
@@ -1542,7 +2106,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 14504
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 288563
+    }
+   }
   },
   {
    "pid": "H09",
@@ -1574,7 +2150,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 3350
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 48294
+    }
+   }
   },
   {
    "pid": "H10",
@@ -1597,7 +2185,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1513
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 16053
+    }
+   }
   },
   {
    "pid": "H11",
@@ -1620,7 +2220,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1364
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 17470
+    }
+   }
   },
   {
    "pid": "H12",
@@ -1652,7 +2264,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 7638
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 85436
+    }
+   }
   },
   {
    "pid": "H13",
@@ -1684,7 +2308,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1711
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 44245
+    }
+   }
   },
   {
    "pid": "H14",
@@ -1716,7 +2352,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 320780
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 4046310
+    }
+   }
   },
   {
    "pid": "H15",
@@ -1739,7 +2387,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 16838
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 150089
+    }
+   }
   },
   {
    "pid": "H16",
@@ -1789,7 +2449,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 20741
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 286059
+    }
+   }
   },
   {
    "pid": "H17",
@@ -1821,7 +2493,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 20642
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 521379
+    }
+   }
   },
   {
    "pid": "H18",
@@ -1853,7 +2537,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 2570
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 25419
+    }
+   }
   },
   {
    "pid": "H19",
@@ -1876,7 +2572,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 19557
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 243315
+    }
+   }
   },
   {
    "pid": "H20",
@@ -1908,7 +2616,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 10604
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1342269
+    }
+   }
   },
   {
    "pid": "X01",
@@ -1940,7 +2660,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 35305
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 458734
+    }
+   }
   },
   {
    "pid": "X02",
@@ -1972,7 +2704,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 10081
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 319452
+    }
+   }
   },
   {
    "pid": "X03",
@@ -2022,7 +2766,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 6472
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 157043
+    }
+   }
   },
   {
    "pid": "X04",
@@ -2063,7 +2819,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 2368
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 74819
+    }
+   }
   },
   {
    "pid": "X05",
@@ -2086,7 +2854,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 8025
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 215762
+    }
+   }
   },
   {
    "pid": "X06",
@@ -2136,7 +2916,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 2459
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 35852
+    }
+   }
   },
   {
    "pid": "X07",
@@ -2177,7 +2969,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 14190
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 873808
+    }
+   }
   },
   {
    "pid": "X08",
@@ -2227,7 +3031,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 398015
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 6333007
+    }
+   }
   },
   {
    "pid": "X09",
@@ -2277,7 +3093,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 19241
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 297244
+    }
+   }
   },
   {
    "pid": "X10",
@@ -2300,7 +3128,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 3041
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1205696
+    }
+   }
   },
   {
    "pid": "X11",
@@ -2359,7 +3199,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 24251
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 578131
+    }
+   }
   },
   {
    "pid": "X12",
@@ -2400,7 +3252,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 918
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 19309
+    }
+   }
   },
   {
    "pid": "X13",
@@ -2432,7 +3296,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1929
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 637462
+    }
+   }
   },
   {
    "pid": "X14",
@@ -2473,7 +3349,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 6032
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 142987
+    }
+   }
   },
   {
    "pid": "X15",
@@ -2486,7 +3374,19 @@
    "mutation_score_official": 1.0,
    "mutation_score_fresh": 1.0,
    "surviving_mutants": [],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 7320
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 167586
+    }
+   }
   },
   {
    "pid": "X16",
@@ -2536,7 +3436,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 2297
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 31178
+    }
+   }
   },
   {
    "pid": "X17",
@@ -2559,7 +3471,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 2818
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 1572102
+    }
+   }
   },
   {
    "pid": "X18",
@@ -2572,7 +3496,19 @@
    "mutation_score_official": 1.0,
    "mutation_score_fresh": 1.0,
    "surviving_mutants": [],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 623
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 6451
+    }
+   }
   },
   {
    "pid": "X19",
@@ -2595,7 +3531,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 4415
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 164291
+    }
+   }
   },
   {
    "pid": "X20",
@@ -2627,7 +3575,19 @@
      }
     }
    ],
-   "impossible_variant_ok": true
+   "impossible_variant_ok": true,
+   "oracles": {
+    "whitespace": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 2090
+    },
+    "befunge98": {
+     "verified_official": true,
+     "verified_fresh": true,
+     "max_steps": 38041
+    }
+   }
   }
  ]
 }

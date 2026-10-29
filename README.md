@@ -35,7 +35,7 @@ Details, witnesses and commands: [docs/FINDINGS.md](docs/FINDINGS.md). Per-probl
 | `esoverified probes` | Scripted exploits against the paper's harness (rebuilt exactly as its setup script lays it out) and against esoverified's. |
 | `esoverified serve` | The paper's sequential protocol (fixed order, 3 hidden submissions, no revisits) as a grader server plus an agent client; knobs for test source, run budget, feedback granularity and comparison policy. |
 | `esoverified compile PID --language L` | `esoc`, a compiler from a small IR to all three esolangs: the paper's metaprogramming strategy as a tested tool. |
-| `esoverified oracles` | Compile and verify reference programs for every problem and language. |
+| `esoverified oracles` | Compile and verify reference programs for every problem and language. The verified Whitespace and Befunge-98 programs ship in [`oracles/`](oracles) with a manifest of their checks; Brainfuck oracles are generated on demand (they run to megabytes). |
 | `esoverified harbor` | One Harbor task per language and problem: `esorun` for unlimited local runs, hidden tests, isolated grading, `reward` (binary, as in the paper) + `fraction` (partial credit). Impossible variants for measuring cheating. |
 | `esoverified difftest` | Differential fuzzing of the interpreters against the official ones. |
 | `esoverified report` | Per-problem report cards (JSON + Markdown). |
