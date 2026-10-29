@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "esolang-env-forge"
+version = "0.1.0"
+description = "Verified, contamination-resistant RL environments and a model-free audit toolkit for unfamiliar-language coding tasks (EsoLang-Bench): fast interpreters, reference oracles, a compiler to Brainfuck/Befunge-98/Whitespace, mutation-score test audits, fresh private tests, harness exploit probes, and Harbor / verifiers packaging."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "Muhammad Labeeb Tariq" }]
+dependencies = []
+keywords = ["esolang-bench", "reinforcement-learning", "rlvr", "rl-environments", "llm-agents", "agent-evaluation",
+            "evals", "benchmarks", "verifiers", "reward-hacking", "mutation-testing", "contamination",
+            "coding-agents", "brainfuck", "befunge", "whitespace", "compiler", "harbor"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://github.com/phoenixlibbi/esolang-env-forge"
+Issues = "https://github.com/phoenixlibbi/esolang-env-forge/issues"
+
+[project.scripts]
+esoforge = "esoforge.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["esoforge"]
+
+[tool.pytest.ini_options]
+markers = ["docker: needs a Docker daemon (deselect with -m 'not docker')",
+           "slow: long-running (deselect with -m 'not slow')"]
+addopts = "-m 'not docker'"
+testpaths = ["tests"]
