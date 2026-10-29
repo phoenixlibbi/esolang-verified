@@ -389,7 +389,6 @@ def _h_strip(lay: HardenedLayout) -> ProbeResult:
 
 def _h_redirect(lay: HardenedLayout) -> ProbeResult:
     """The agent edits its client to talk to a fake grader that always says SOLVED."""
-    from .harness import GraderServer
     import socketserver
 
     class Fake(socketserver.StreamRequestHandler):

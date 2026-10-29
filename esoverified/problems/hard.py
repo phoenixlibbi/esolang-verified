@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from .util import LOWER, PRINTABLE, ints, line_text, lines, num, text, trunc_div, words
+from .util import LOWER, ints, line_text, lines, num, text, trunc_div, words
 from . import register
 
 

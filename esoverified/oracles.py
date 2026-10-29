@@ -12,7 +12,7 @@ from __future__ import annotations
 import json
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Dict, List, Optional, Sequence, Tuple
+from typing import Dict, Optional, Sequence, Tuple
 
 from . import EXTENSIONS, LANGUAGES, canonical_language
 from .dataset import get_problem, problem_ids
@@ -78,5 +78,3 @@ def coverage(manifest: Dict[str, Dict[str, dict]]) -> Dict[str, Dict[str, int]]:
                    "verified_fresh": sum(r["verified_fresh"] for r in rows.values())}
             for lang, rows in manifest.items()}
 
-
-__all__ = ["OracleCheck", "check_oracle", "build_oracles", "coverage", "List"]

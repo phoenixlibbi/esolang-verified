@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 from ..ir import Builder, sel, udiv, umod
-from ..lib import NL, SPACE, Input, fmod, is_digit, print_range
+from ..lib import NL, SPACE, fmod, print_range
 from . import program
-from .easy import LINE, count_line, echo_line
+from .easy import LINE, echo_line
 from .medium import print_sep, read_n_ints
 
 
@@ -314,5 +314,3 @@ def h20(P, I):
         print_range(P, txt, order[i] * STRIDE, order[i] * STRIDE + ln[order[i]])
         P.set(i, i + 1)
 
-
-__all__ = ["yes_no", "sieve", "count_line", "is_digit"]

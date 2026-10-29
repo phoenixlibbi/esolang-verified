@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List
 
-from .ir import Builder, If, PrintChar, PrintInt, Program, Set, Stmt, Var, While, udiv, umod
+from .ir import Builder, If, PrintInt, Program, Stmt, While, udiv, umod
 
 
 def lower_print_int(prog: Program) -> Program:
@@ -44,5 +44,3 @@ def lower_print_int(prog: Program) -> Program:
     b.prog.body = lower(prog.body)
     return b.prog
 
-
-__all__ = ["lower_print_int", "Var", "Set", "PrintChar"]

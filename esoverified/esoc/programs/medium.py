@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from ..ir import Builder, sel, udiv, umod
-from ..lib import NL, SPACE, Input, iabs, print_range, tdiv
+from ..lib import SPACE, Input, iabs
 from . import program
 from .easy import LINE, count_line, echo_line, is_vowel
 
@@ -308,5 +308,3 @@ def m20(P, I):
         I.advance()
     P.print_int(n)
 
-
-__all__ = ["print_sep", "read_n_ints", "print_ints", "sort_ints", "gcd_into", "tdiv", "NL", "print_range"]

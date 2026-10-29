@@ -21,12 +21,11 @@ from __future__ import annotations
 import json
 import socket
 import socketserver
-import sys
 import threading
 import time
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
-from typing import Dict, List, Optional, Sequence, Tuple
+from typing import Dict, List, Optional, Tuple
 
 from . import EXTENSIONS, canonical_language
 from .dataset import get_problem, problem_ids

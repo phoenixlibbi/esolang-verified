@@ -30,7 +30,7 @@ from contextlib import contextmanager
 from dataclasses import dataclass
 from typing import Callable, Dict, Iterator, List, Optional, Tuple
 
-from .ir import (Arr, Bin, Const, Expr, Idx, If, PrintChar, PrintInt, Program, ReadChar, Sel, Set, Stmt, Store,
+from .ir import (Bin, Const, Expr, Idx, If, PrintChar, PrintInt, Program, ReadChar, Sel, Set, Stmt, Store,
                  Un, Var, While)
 
 

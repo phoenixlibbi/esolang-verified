@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from ..ir import Builder, sel, udiv, umod
-from ..lib import SPACE, Input, tdiv
+from ..ir import sel, udiv, umod
+from ..lib import SPACE, tdiv
 from . import program
 from .easy import LINE
 from .hard import yes_no
-from .medium import gcd_into, print_ints, print_sep, read_n_ints
+from .medium import gcd_into, print_sep, read_n_ints
 
 
 @program("X01")
@@ -362,5 +362,3 @@ def x20(P, I):
         P.set(i, i + 1)
     P.print_int(r + 1)
 
-
-__all__ = ["print_ints"]
