@@ -12,7 +12,7 @@ esoverified/
   audit.py          mutation-score audit of the official tests
   impossible.py     ImpossibleBench-style variants (one contradicting test)
   harness.py        hardened sequential harness: grader server + agent client
-  probes.py         scripted exploits against the official and hardened harness
+  probes.py         scripted integrity probes for a file-based harness and the grader process
   esoc/             compiler: IR, library macros, 80 programs, backends ws / b98 / bf
   oracles.py        compile + verify reference programs per language
   harbor.py         Harbor task export (isolated verifier, reward + fraction)
@@ -57,8 +57,7 @@ beyond 2^53 on the official interpreters).
 
 ## Hardened harness
 
-The paper's harness keeps its state file and configuration in places the agent controls.
-esoverified splits the protocol in two:
+For RL the grader must be out of the policy's reach, so esoverified splits the protocol in two:
 
 * `Session` (grader process) owns tests, state, submission caps, run budgets, feedback
   granularity and the comparison policy, and logs every event;

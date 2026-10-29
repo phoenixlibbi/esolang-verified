@@ -185,7 +185,7 @@ author_name = "EsoLang-Verified {__version__}"
 difficulty = "{p.difficulty}"
 category = "unfamiliar-language-programming"
 tags = ["esolang", "{lang}", "esolang-bench", "{pid}", "tests-{tests_mode}"]
-source = "EsoLang-Bench {pid} (Sharma & Chopra, 2026); protocol of arXiv:2606.10933"
+source = "EsoLang-Bench {pid} (arXiv:2603.09678); protocol of arXiv:2606.10933"
 tests = "{seed_note}"
 
 [verifier]

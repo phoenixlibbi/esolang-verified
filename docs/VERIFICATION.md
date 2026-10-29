@@ -33,7 +33,7 @@ verification (oracle 1.0, wrong program 0.0, impossible variant 0.0 for the orac
 |---|---|
 | Hugging Face `Lossfunk/Esolang-Bench` first data commit (`74c5e6d`, "v1.0", 2026-03-07) | `data/test.jsonl` sha256 = pinned copy (`04ce0dbf…`): the tests were public from the first release |
 | GitHub `Lossfunk/EsolangBench` first version of `esolang_benchmark.json` (2026-03-07) | 80 problems, `input_output_examples` = the graded tests |
-| `Lossfunk/esolang-metaprogramming` created | 2026-06-08 (tests redacted in `private/`) |
+| `Lossfunk/esolang-metaprogramming` (reference harness) created | 2026-06-08 |
 
 ## Problems, fresh tests, audit
 
@@ -48,8 +48,8 @@ verification (oracle 1.0, wrong program 0.0, impossible variant 0.0 for the orac
 
 | Target | Result |
 |---|---|
-| Paper's harness, rebuilt as `scripts/setup_main_grid.py` lays it out, real tests in `private/` | 8 / 8 probes exploit it |
-| esoverified grader server + client | 0 / 9 probes succeed; an honest correct program is still SOLVED |
+| File-based reference harness, rebuilt as its setup script lays it out, real tests in `private/` | 8 / 8 probes change the recorded result or grading inputs |
+| esoverified grader server + client | 9 / 9 probes have no effect; a correct program is still SOLVED |
 
 ## esoc and oracles
 

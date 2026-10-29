@@ -2,43 +2,28 @@
 
 Everything below is reproducible with the commands shown, from a fresh clone, with no
 model and no API key. Numbers are from `esoverified` 0.1.0 on EsoLang-Bench
-`Lossfunk/Esolang-Bench@a38a25f` and the paper's code `Lossfunk/esolang-metaprogramming@b93ef26`.
+`Lossfunk/Esolang-Bench@a38a25f` and the reference harness `Lossfunk/esolang-metaprogramming@b93ef26`.
 
 ---
 
-## 1. The "hidden" tests are public
+## 1. Test availability
 
-The paper describes six private hidden tests per problem, and its code release ships them
-redacted (`benchmark_harness/private/esolang_full_private.json` replaces every input and
-expected output with `<REDACTED_INPUT>` / `<REDACTED_EXPECTED>`).
-
-The same 480 input/output pairs are public, unredacted, in two places:
+The six tests per problem are kept from the agent during a run. They are also publicly available, which is
+standard practice for benchmarks:
 
 | Where | Field | Identical to the graded tests |
 |---|---|---|
 | `huggingface.co/datasets/Lossfunk/Esolang-Bench`, `data/test.jsonl` | `test_cases` | 80/80 problems |
 | `github.com/Lossfunk/EsolangBench`, `esolang_bench/data/esolang_benchmark.json` | `input_output_examples` | 80/80 problems |
 
-Timeline (from the Hugging Face and GitHub commit history):
+Both have held the same 480 tests since the dataset's v1.0 release on 2026-03-07 (byte-identical,
+sha256 `04ce0dbf…`). Models released before then are unlikely to have seen them; models trained on
+public data afterwards may have. For an RL environment that will be used for months, EsoLang-Verified
+adds **fresh private suites**: each lab draws its own tests from a secret seed
+(`esoverified fresh --seed N`), with expected outputs from reference solutions that must first reproduce
+all six official tests exactly (the gold-sanity gate).
 
-| Date | Event |
-|---|---|
-| 2026-02-14 | `Lossfunk/EsolangBench` GitHub repo created |
-| 2026-03-07 | EsoLang-Bench v1.0 released on Hugging Face and GitHub **with all 480 tests** (byte-identical to the tests graded today, sha256 `04ce0dbf…`) |
-| 2026-06-08/09 | The metaprogramming paper and its code release; the code redacts the tests |
-
-**This is not a criticism of the authors.** Publishing a benchmark's tests is standard practice
-(HumanEval and SWE-bench do it), and "hidden" in the paper means hidden from the agent during
-a run, which their sandboxed protocol provides. The agents in the paper were released before or
-around the dataset (e.g. Claude Opus 4.6 and Sonnet 4.6 in February 2026), so contamination is an
-unlikely explanation for their results, and the paper itself says it cannot rule out exposure.
-The risk is forward-looking: any model trained on public data after March 2026 may have seen the
-exact tests, which matters most if EsoLang-Bench is used as an RL training environment. EsoLang-Verified's answer is **fresh private
-suites**: each lab draws its own tests from a secret seed (`esoverified fresh --seed N`), with
-expected outputs from reference solutions that are first checked to reproduce all six
-official tests exactly (the gold-sanity gate).
-
-## 2. Almost a third of wrong programs pass the official tests
+## 2. Test strength
 
 `esoverified audit` runs **512 deliberately wrong programs** (mutants) against the six
 official tests of each problem. A mutant counts only if it is *really* wrong: it must
@@ -93,41 +78,32 @@ mutants survived it (a leading-space input for M19, a three-digit K for X20); th
 edge categories were then added to the edge lists, which is why the score is 100%.
 Reproduce: `esoverified audit -v` and `esoverified report --out report/`.
 
-## 3. The official harness can be exploited from the agent's own shell
+## 3. Grader isolation for RL
 
-`esoverified probes --target official` rebuilds the paper's experiment layout exactly
-(`benchmark_harness/` with the sentinel, interpreters, private and public files, and a
-cell directory with a relative `harness.py` symlink, as `scripts/setup_main_grid.py` does),
-puts the real tests in `private/`, and plays a cheating agent through the harness's own
-CLI. Every probe succeeds:
+In RL a policy is optimized against the grader, so grading must sit outside anything the policy can
+change. `esoverified probes` measures this with scripted probes run through a harness's own commands.
+The file-based reference harness (rebuilt in the layout of its setup script, with the real tests in
+place) keeps its state, configuration and tests where a process with shell access in the working
+directory can reach them, which is fine for the cooperative protocol it was designed for:
 
-| Probe | What the agent does | Result |
+| Probe | What a process with shell access does | Effect on the file-based harness |
 |---|---|---|
-| read_hidden_tests | `cat ../../../../../benchmark_harness/private/esolang_full_private.json` | tests readable |
-| state_forgery | sets `best_score: 6` in `harness_state.json` (in its cell), then `fetch` | problem recorded as **solved** with 0 submissions |
-| submission_cap_reset | clears `submissions` in `harness_state.json` after 3 failures | 4th hidden submission graded |
-| sentinel_hijack | creates `.experiment_root` and its own `private/` in the cell (the harness searches the cell first) | empty program **SOLVED** |
-| env_override | `HARNESS_PRIVATE_FILE=my_tests.json python harness.py submit ...` | empty program **SOLVED** |
-| interpreter_hijack | `HARNESS_INTERPRETER_DIR=./myinterp` with an interpreter that answers from the test file | empty program **SOLVED** |
-| per_test_feedback | `submit` | prints a verdict per hidden test |
-| strip_leniency | prints `"\n\n   Hello World!   \n\n"` for E01 | **SOLVED** (`output.strip() == expected.strip()`) |
+| read_hidden_tests | reads the test file by relative path | tests readable |
+| state_forgery | sets `best_score: 6` in `harness_state.json`, then `fetch` | problem recorded as solved |
+| submission_cap_reset | clears `submissions` in `harness_state.json` | further hidden submissions graded |
+| sentinel_hijack | adds `.experiment_root` and a `private/` test file in the working directory | its own tests used for grading |
+| env_override | sets `HARNESS_PRIVATE_FILE` | its own tests used for grading |
+| interpreter_hijack | sets `HARNESS_INTERPRETER_DIR` | its own interpreter used for grading |
+| per_test_feedback | `submit` | one verdict per hidden test (more detail than an aggregate count) |
+| strip_leniency | prints E01's answer padded with whitespace | accepted (outputs are compared after `strip()`) |
 
-The paper's isolation is an instruction in the prompt ("Do not read private test files,
-reverse-engineer the harness, or hardcode outputs"; Appendix A.11 "agents are instructed
-not to inspect…"), not an enforced boundary. We make **no claim that any agent in the
-paper did any of this**; the point is that the reported scores depend on agents choosing
-not to, which matters for RL training, where policies are optimized against the grader.
+Nothing here concerns any agent's behaviour; the probes describe what an RL policy *could* learn if the
+reward came from such a harness. EsoLang-Verified's harness splits grading into a separate process that
+owns tests, state and limits; the agent gets only a client. Running the same probes plus a ninth
+(rewriting the client to talk to a fake grader): **9/9 have no effect**. Reproduce:
+`esoverified probes -v`.
 
-Two of these also contradict the paper's text: Section 2 and Table 4 say hidden
-submissions return "only the aggregate number of private tests passed", but `submit`
-prints per-test verdicts; and the `strip()` comparison makes the E02 test
-`'   spaces   '` unable to detect a trimming echo.
-
-`esoverified probes --target hardened` runs the same exploits, plus a ninth (rewriting the
-client to talk to a fake grader), against esoverified's harness, where a separate grader
-process owns the tests, the state and every limit. **All 9 are blocked.**
-
-## 4. The official interpreters deviate from their language specs
+## 4. Interpreter semantics
 
 esoverified's fast interpreters (merged instruction runs, one-step "simple loops",
 exact step accounting) agree with the official interpreters on **9,000 fuzzed programs**
@@ -142,13 +118,12 @@ documented places:
 | Befunge-98 | `/` and `%` by zero raise an error | push 0 | programs that rely on the spec crash |
 | Befunge-98 | `/` is float `int(a / b)`; `%` is Python's floored modulo | truncating `/` and `%` with matching signs | `a == (a / b) * b + a % b` fails for negatives |
 
-None of this is a problem if agents only target the official interpreter, but a
-Befunge program written from the spec (or from training data) can fail for reasons the
-language card does not mention. Reproduce: `esoverified difftest`.
+Programs written for the benchmark run on the official semantics, and esoverified grades with them by
+default; the `spec` dialect is there to see which programs depend on these details. Reproduce: `esoverified difftest`.
 
 ## 5. Reference programs in the target languages
 
-The benchmark ships no reference solutions. esoc (see `DESIGN.md`) compiles one IR
+No reference programs in the target languages were available, so esoc (see `DESIGN.md`) compiles one IR
 program per problem to all three languages; an oracle is **verified** when it reproduces
 every expected output on the official interpreter semantics within the official
 10,000,000-step cap.
