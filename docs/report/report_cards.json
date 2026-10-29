@@ -1,0 +1,2633 @@
+{
+ "summary": {
+  "problems": 80,
+  "mutants_total": 593,
+  "mutants_valid": 512,
+  "equivalent": 81,
+  "survivors_official": 160,
+  "survivors_fresh": 0,
+  "problems_with_survivor": 74,
+  "score_official": 0.6875,
+  "score_fresh": 1.0,
+  "by_family": {
+   "specific": {
+    "valid": 158,
+    "survive_official": 29,
+    "survive_fresh": 0
+   },
+   "fixed_buffer": {
+    "valid": 56,
+    "survive_official": 42,
+    "survive_fresh": 0
+   },
+   "whitespace": {
+    "valid": 3,
+    "survive_official": 3,
+    "survive_fresh": 0
+   },
+   "byte_cell": {
+    "valid": 64,
+    "survive_official": 35,
+    "survive_fresh": 0
+   },
+   "digit_limit": {
+    "valid": 122,
+    "survive_official": 41,
+    "survive_fresh": 0
+   },
+   "sign": {
+    "valid": 31,
+    "survive_official": 10,
+    "survive_fresh": 0
+   },
+   "off_by_one": {
+    "valid": 78,
+    "survive_official": 0,
+    "survive_fresh": 0
+   }
+  },
+  "by_tier": {
+   "easy": {
+    "valid": 144,
+    "survive_official": 39,
+    "survive_fresh": 0
+   },
+   "medium": {
+    "valid": 125,
+    "survive_official": 35,
+    "survive_fresh": 0
+   },
+   "hard": {
+    "valid": 111,
+    "survive_official": 37,
+    "survive_fresh": 0
+   },
+   "extra_hard": {
+    "valid": 132,
+    "survive_official": 49,
+    "survive_fresh": 0
+   }
+  },
+  "policy_only": 4
+ },
+ "public_test_sources": [
+  "huggingface.co/datasets/Lossfunk/Esolang-Bench (data/*.jsonl, field test_cases)",
+  "github.com/Lossfunk/EsolangBench (esolang_bench/data/*.json, field input_output_examples)"
+ ],
+ "cards": [
+  {
+   "pid": "E01",
+   "title": "Print Hello World",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 2,
+   "survive_official": 0,
+   "mutation_score_official": 1.0,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E02",
+   "title": "Echo Line",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 1,
+   "mutation_score_official": 0.75,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": ",&NcF~q=b-&)/0>Fx",
+      "expected": ",&NcF~q=b-&)/0>Fx",
+      "mutant_output": ",&NcF~q=b-&)/0>F"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E03",
+   "title": "Hello Name",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 5,
+   "survive_official": 4,
+   "mutation_score_official": 0.2,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "trimmed_name",
+     "family": "specific",
+     "witness": {
+      "input": " M",
+      "expected": "Hello,  M!",
+      "mutant_output": "Hello, M!"
+     }
+    },
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "#FH7bc7XR",
+      "expected": "Hello, #FH7bc7XR!",
+      "mutant_output": "Hello, #FH7bc7X!"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "(?Y%~FKGjixdv=&3[",
+      "expected": "Hello, (?Y%~FKGjixdv=&3[!",
+      "mutant_output": "Hello, (?Y%~FKGjixdv=&3!"
+     }
+    },
+    {
+     "mutant": "trim_lines",
+     "family": "whitespace",
+     "witness": {
+      "input": " M",
+      "expected": "Hello,  M!",
+      "mutant_output": "Hello, M!"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E04",
+   "title": "Sum Two Integers",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 12,
+   "survive_official": 1,
+   "mutation_score_official": 0.9166666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "3 2525",
+      "expected": "2528",
+      "mutant_output": "255"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E05",
+   "title": "Multiply Two Integers",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 12,
+   "survive_official": 2,
+   "mutation_score_official": 0.8333333333333334,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "first_2_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "115 6",
+      "expected": "690",
+      "mutant_output": "66"
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1 2378",
+      "expected": "2378",
+      "mutant_output": "237"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E06",
+   "title": "Even Or Odd",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 3,
+   "mutation_score_official": 0.25,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "c_remainder",
+     "family": "specific",
+     "witness": {
+      "input": "-1",
+      "expected": "odd",
+      "mutant_output": "even"
+     }
+    },
+    {
+     "mutant": "first_2_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "127",
+      "expected": "odd",
+      "mutant_output": "even"
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1552",
+      "expected": "even",
+      "mutant_output": "odd"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E07",
+   "title": "String Length",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 8,
+   "survive_official": 2,
+   "mutation_score_official": 0.75,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "<gM44ZNbO\"i(q((&/*s#s'f]7@93SIFGaf5)ao~*nWDU[-<-+.BBxbTSO2M}9*M-[qJL&7/[ED`rKa-^[(UvHgHhTe+y^-pg*~ Mf8@!cJb5eY|snDFk'=dx]7sEcMv]B)!js+Q>=f<LNy+o*[feIbXf6WUszam7}a!<Hm9|}yz~^F%omHL@QmwfY(jCIdxU~Au[;zRd>,C41:l8;Em[cZ`-CSs=^/5)1.`A9BAj2}R(!MFnQ'Bfpx:a&?<|%fC1",
+      "expected": "256",
+      "mutant_output": "0"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "\"JyYT?tcq&q(Y%uQ9k",
+      "expected": "18",
+      "mutant_output": "16"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E08",
+   "title": "Reverse String",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 1,
+   "mutation_score_official": 0.75,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "-&~&7?:#Of&;UY_lm",
+      "expected": "ml_YU;&fO#:?7&~&-",
+      "mutant_output": "l_YU;&fO#:?7&~&-"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E09",
+   "title": "Count Vowels",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 8,
+   "survive_official": 4,
+   "mutation_score_official": 0.5,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expected": "300",
+      "mutant_output": "44"
+     }
+    },
+    {
+     "mutant": "last_digit_only",
+     "family": "digit_limit",
+     "witness": {
+      "input": "AEIOUaeiou",
+      "expected": "10",
+      "mutant_output": "0"
+     }
+    },
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "AEIOUaeiou",
+      "expected": "10",
+      "mutant_output": "8"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "]}bF[X508@#<C2 Oe",
+      "expected": "2",
+      "mutant_output": "1"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E10",
+   "title": "Sum From 1 To N",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 10,
+   "survive_official": 2,
+   "mutation_score_official": 0.8,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "256",
+      "expected": "32896",
+      "mutant_output": "0"
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1000",
+      "expected": "500500",
+      "mutant_output": "5050"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E11",
+   "title": "Sum Of Digits",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 9,
+   "survive_official": 0,
+   "mutation_score_official": 1.0,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E12",
+   "title": "Minimum Of Two",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 12,
+   "survive_official": 1,
+   "mutation_score_official": 0.9166666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "-4200 9",
+      "expected": "-4200",
+      "mutant_output": "-420"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E13",
+   "title": "Maximum Of Three",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 12,
+   "survive_official": 1,
+   "mutation_score_official": 0.9166666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "4995 2 1",
+      "expected": "4995",
+      "mutant_output": "499"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E14",
+   "title": "Repeat String N Times",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 3,
+   "survive_official": 1,
+   "mutation_score_official": 0.6666666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "one_digit_n",
+     "family": "specific",
+     "witness": {
+      "input": "10\nf",
+      "expected": "ffffffffff",
+      "mutant_output": "f"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E15",
+   "title": "Concatenate Two Lines",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 3,
+   "mutation_score_official": 0.25,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "trimmed_lines",
+     "family": "specific",
+     "witness": {
+      "input": "p\n  r",
+      "expected": "p   r",
+      "mutant_output": "p r"
+     }
+    },
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "67Gsc?M-\"\n3",
+      "expected": "67Gsc?M-\" 3",
+      "mutant_output": "67Gsc?M- 3"
+     }
+    },
+    {
+     "mutant": "trim_lines",
+     "family": "whitespace",
+     "witness": {
+      "input": "p\n  r",
+      "expected": "p   r",
+      "mutant_output": "p r"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E16",
+   "title": "First And Last Character",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 2,
+   "mutation_score_official": 0.5,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "2kfT-<ep)",
+      "expected": "2 )",
+      "mutant_output": "2 p"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "\"WxQ)9Wu!7Bbhnb4/",
+      "expected": "\" /",
+      "mutant_output": "\" 4"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E17",
+   "title": "Uppercase String",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 2,
+   "mutation_score_official": 0.5,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "no_upper_bound",
+     "family": "specific",
+     "witness": {
+      "input": "}",
+      "expected": "}",
+      "mutant_output": "]"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "(~S!:6O?1nx>>rU B",
+      "expected": "(~S!:6O?1NX>>RU B",
+      "mutant_output": "(~S!:6O?1NX>>RU "
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E18",
+   "title": "Count Spaces",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 8,
+   "survive_official": 3,
+   "mutation_score_official": 0.625,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "                                                                                                                                                                                                                                                                                                            ",
+      "expected": "300",
+      "mutant_output": "44"
+     }
+    },
+    {
+     "mutant": "last_digit_only",
+     "family": "digit_limit",
+     "witness": {
+      "input": "d b ca  bc       ",
+      "expected": "11",
+      "mutant_output": "1"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "  a d d  bcbd  c ",
+      "expected": "9",
+      "mutant_output": "8"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E19",
+   "title": "Integer Average Of Two",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 12,
+   "survive_official": 2,
+   "mutation_score_official": 0.8333333333333334,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "floor_division",
+     "family": "specific",
+     "witness": {
+      "input": "-1 0",
+      "expected": "0",
+      "mutant_output": "-1"
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "0 1000",
+      "expected": "500",
+      "mutant_output": "50"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "E20",
+   "title": "Compare Two Integers",
+   "difficulty": "easy",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 7,
+   "survive_official": 4,
+   "mutation_score_official": 0.42857142857142855,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "magnitude_compare",
+     "family": "specific",
+     "witness": {
+      "input": "-1 1",
+      "expected": "less",
+      "mutant_output": "equal"
+     }
+    },
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "-1 1",
+      "expected": "less",
+      "mutant_output": "greater"
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1343 257",
+      "expected": "greater",
+      "mutant_output": "less"
+     }
+    },
+    {
+     "mutant": "sign_ignored",
+     "family": "sign",
+     "witness": {
+      "input": "-1 1",
+      "expected": "less",
+      "mutant_output": "equal"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M01",
+   "title": "Palindrome Check",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 4,
+   "mutation_score_official": 0.0,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "case_insensitive",
+     "family": "specific",
+     "witness": {
+      "input": "Aa",
+      "expected": "no",
+      "mutant_output": "yes"
+     }
+    },
+    {
+     "mutant": "ends_only",
+     "family": "specific",
+     "witness": {
+      "input": "ab a",
+      "expected": "no",
+      "mutant_output": "yes"
+     }
+    },
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "+(U6 6U(+",
+      "expected": "yes",
+      "mutant_output": "no"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "4/ |p[fx~xf[p| /4",
+      "expected": "yes",
+      "mutant_output": "no"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M02",
+   "title": "Word Count",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 8,
+   "survive_official": 2,
+   "mutation_score_official": 0.75,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x",
+      "expected": "300",
+      "mutant_output": "44"
+     }
+    },
+    {
+     "mutant": "last_digit_only",
+     "family": "digit_limit",
+     "witness": {
+      "input": "zargmbth a gn l rktpzbbw hhk i ojfc rq doo",
+      "expected": "10",
+      "mutant_output": "0"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M03",
+   "title": "Run Length Encoding",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 3,
+   "mutation_score_official": 0.25,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "single_digit_counts",
+     "family": "specific",
+     "witness": {
+      "input": "aaaaaaaaaa",
+      "expected": "a10",
+      "mutant_output": "a0"
+     }
+    },
+    {
+     "mutant": "runs_capped_at_9",
+     "family": "specific",
+     "witness": {
+      "input": "aaaaaaaaaa",
+      "expected": "a10",
+      "mutant_output": "a9a1"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "cccaacccccccccccc",
+      "expected": "c3a2c12",
+      "mutant_output": "c3a2c11"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M04",
+   "title": "Caesar Shift By 3",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 2,
+   "mutation_score_official": 0.5,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "ahypmcwfe",
+      "expected": "dkbspfzih",
+      "mutant_output": "dkbspfzi"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "eniascvierkxavepn",
+      "expected": "hqldvfylhunadyhsq",
+      "mutant_output": "hqldvfylhunadyhs"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M05",
+   "title": "Simple Binary Expression",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 12,
+   "survive_official": 1,
+   "mutation_score_official": 0.9166666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1000 * 100",
+      "expected": "100000",
+      "mutant_output": "10000"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M06",
+   "title": "Greatest Common Divisor",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 10,
+   "survive_official": 4,
+   "mutation_score_official": 0.6,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "c_remainder_sign",
+     "family": "specific",
+     "witness": {
+      "input": "-4 -6",
+      "expected": "2",
+      "mutant_output": "-2"
+     }
+    },
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "-12 18",
+      "expected": "6",
+      "mutant_output": "2"
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "8 2012",
+      "expected": "4",
+      "mutant_output": "1"
+     }
+    },
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "256 512",
+      "expected": "256",
+      "mutant_output": "0"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M07",
+   "title": "Factorial",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 7,
+   "survive_official": 0,
+   "mutation_score_official": 1.0,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M08",
+   "title": "Nth Fibonacci Number",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 7,
+   "survive_official": 1,
+   "mutation_score_official": 0.8571428571428571,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "u32_overflow",
+     "family": "specific",
+     "witness": {
+      "input": "48",
+      "expected": "4807526976",
+      "mutant_output": "512559680"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M09",
+   "title": "Decimal To Binary",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 6,
+   "survive_official": 2,
+   "mutation_score_official": 0.6666666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "256",
+      "expected": "100000000",
+      "mutant_output": "0"
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1000",
+      "expected": "1111101000",
+      "mutant_output": "1100100"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M10",
+   "title": "Binary To Decimal",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 6,
+   "survive_official": 2,
+   "mutation_score_official": 0.6666666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "last_8_bits",
+     "family": "specific",
+     "witness": {
+      "input": "100000000",
+      "expected": "256",
+      "mutant_output": "0"
+     }
+    },
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "100000000",
+      "expected": "256",
+      "mutant_output": "0"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M11",
+   "title": "Substring Occurrences",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 7,
+   "survive_official": 3,
+   "mutation_score_official": 0.5714285714285714,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "last_digit_only",
+     "family": "digit_limit",
+     "witness": {
+      "input": "aaaaaaaaaaaa\naa",
+      "expected": "11",
+      "mutant_output": "1"
+     }
+    },
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "aaaabaaab\nb",
+      "expected": "2",
+      "mutant_output": "1"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "aaaababbabaaabbba\na",
+      "expected": "10",
+      "mutant_output": "9"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M12",
+   "title": "Remove Vowels",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 1,
+   "mutation_score_official": 0.75,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "!_L+HKczE$&v, s\"S",
+      "expected": "!_L+HKcz$&v, s\"S",
+      "mutant_output": "!_L+HKcz$&v, s\""
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M13",
+   "title": "Sort Numbers",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 6,
+   "survive_official": 2,
+   "mutation_score_official": 0.6666666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "magnitude_sort",
+     "family": "specific",
+     "witness": {
+      "input": "2\n-59 1",
+      "expected": "-59 1",
+      "mutant_output": "1 -59"
+     }
+    },
+    {
+     "mutant": "first_2_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1\n112",
+      "expected": "112",
+      "mutant_output": "11"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M14",
+   "title": "Second Largest Distinct Number",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 6,
+   "survive_official": 0,
+   "mutation_score_official": 1.0,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M15",
+   "title": "Anagram Test",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 3,
+   "survive_official": 2,
+   "mutation_score_official": 0.3333333333333333,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "same_letter_set",
+     "family": "specific",
+     "witness": {
+      "input": "aa\na",
+      "expected": "no",
+      "mutant_output": "yes"
+     }
+    },
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "aabdbfbde\nbfabdbeda",
+      "expected": "yes",
+      "mutant_output": "no"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M16",
+   "title": "Interleave Two Strings",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 3,
+   "survive_official": 1,
+   "mutation_score_official": 0.6666666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "aehvprxap\n4TFCC7W25",
+      "expected": "a4eThFvCpCr7xWa2p5",
+      "mutant_output": "a4eThFvCpCr7xWa2"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M17",
+   "title": "Replace Spaces With Underscores",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 1,
+   "mutation_score_official": 0.75,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "    abebcde aba b",
+      "expected": "____abebcde_aba_b",
+      "mutant_output": "____abebcde_aba_"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M18",
+   "title": "Sum Of List",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 12,
+   "survive_official": 1,
+   "mutation_score_official": 0.9166666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1\n1283",
+      "expected": "1283",
+      "mutant_output": "128"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M19",
+   "title": "Characters At Even Indices",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 5,
+   "survive_official": 2,
+   "mutation_score_official": 0.6,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": " `kP?ewdWe>w0sI?-",
+      "expected": " k?wW>0I-",
+      "mutant_output": " k?wW>0I"
+     }
+    },
+    {
+     "mutant": "trim_lines",
+     "family": "whitespace",
+     "witness": {
+      "input": " ab",
+      "expected": " b",
+      "mutant_output": "a"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "M20",
+   "title": "Count Distinct Characters",
+   "difficulty": "medium",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 7,
+   "survive_official": 1,
+   "mutation_score_official": 0.8571428571428571,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "KN$*!}YfMWT$P_&^p",
+      "expected": "16",
+      "mutant_output": "15"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H01",
+   "title": "Balanced Parentheses",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 2,
+   "mutation_score_official": 0.5,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "((((()))))",
+      "expected": "yes",
+      "mutant_output": "no"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "((((((()))))(())))",
+      "expected": "yes",
+      "mutant_output": "no"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H02",
+   "title": "Evaluate Expression With Precedence",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 7,
+   "survive_official": 2,
+   "mutation_score_official": 0.7142857142857143,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "257",
+      "expected": "257",
+      "mutant_output": "1"
+     }
+    },
+    {
+     "mutant": "unsigned_output",
+     "family": "sign",
+     "witness": {
+      "input": "1-100",
+      "expected": "-99",
+      "mutant_output": "99"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H03",
+   "title": "Count Primes Up To N",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 10,
+   "survive_official": 3,
+   "mutation_score_official": 0.7,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "256",
+      "expected": "54",
+      "mutant_output": "0"
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1000",
+      "expected": "168",
+      "mutant_output": "25"
+     }
+    },
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "1621",
+      "expected": "257",
+      "mutant_output": "1"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H04",
+   "title": "Nth Prime Number",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 9,
+   "survive_official": 3,
+   "mutation_score_official": 0.6666666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "256",
+      "expected": "1619",
+      "mutant_output": "4999"
+     }
+    },
+    {
+     "mutant": "first_2_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "100",
+      "expected": "541",
+      "mutant_output": "29"
+     }
+    },
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "55",
+      "expected": "257",
+      "mutant_output": "1"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H05",
+   "title": "Big Integer Addition",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 2,
+   "survive_official": 1,
+   "mutation_score_official": 0.5,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "u64",
+     "family": "specific",
+     "witness": {
+      "input": "0\n820313372897948968167",
+      "expected": "820313372897948968167",
+      "mutant_output": "8656633654728697063"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H06",
+   "title": "Longest Word",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 1,
+   "mutation_score_official": 0.75,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "tfnaxvw ffinbfspwe",
+      "expected": "ffinbfspwe",
+      "mutant_output": "ffinbfsp"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H07",
+   "title": "Longest Common Prefix",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 2,
+   "survive_official": 1,
+   "mutation_score_official": 0.5,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "last_two_only",
+     "family": "specific",
+     "witness": {
+      "input": "3\nc\na\naac",
+      "expected": "",
+      "mutant_output": "a"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H08",
+   "title": "Digit Frequency",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 6,
+   "survive_official": 2,
+   "mutation_score_official": 0.6666666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+      "expected": "0 0 0 0 0 0 0 0 0 256",
+      "mutant_output": "0 0 0 0 0 0 0 0 0 0"
+     }
+    },
+    {
+     "mutant": "last_digit_only",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1271158790125011129945077676121541",
+      "expected": "3 10 4 0 2 4 2 5 1 3",
+      "mutant_output": "3 0 4 0 2 4 2 5 1 3"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H09",
+   "title": "General Caesar Cipher",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 6,
+   "survive_official": 2,
+   "mutation_score_official": 0.6666666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "c_remainder",
+     "family": "specific",
+     "witness": {
+      "input": "-1\na",
+      "expected": "z",
+      "mutant_output": "`"
+     }
+    },
+    {
+     "mutant": "first_2_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "-100\nz",
+      "expected": "d",
+      "mutant_output": "p"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H10",
+   "title": "Remove Consecutive Duplicates",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 1,
+   "mutation_score_official": 0.75,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "bbccbbcccaaaccccd",
+      "expected": "bcbcacd",
+      "mutant_output": "bcbcac"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H11",
+   "title": "Run Length Decoding",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 3,
+   "survive_official": 1,
+   "mutation_score_official": 0.6666666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "a1e7v7f3r9",
+      "expected": "aeeeeeeevvvvvvvfffrrrrrrrrr",
+      "mutant_output": "aeeeeeeevvvvvvvfff"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H12",
+   "title": "ASCII Sum",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 8,
+   "survive_official": 2,
+   "mutation_score_official": 0.75,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "['VR<|b-i",
+      "expected": "730",
+      "mutant_output": "625"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "7J%c=$)qWI'vRlnsZ",
+      "expected": "1338",
+      "mutant_output": "1248"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H13",
+   "title": "Polynomial Evaluation",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 10,
+   "survive_official": 2,
+   "mutation_score_official": 0.8,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "0\n-1\n3",
+      "expected": "-1",
+      "mutant_output": "255"
+     }
+    },
+    {
+     "mutant": "unsigned_output",
+     "family": "sign",
+     "witness": {
+      "input": "0\n-1\n3",
+      "expected": "-1",
+      "mutant_output": "1"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H14",
+   "title": "List All Divisors",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 6,
+   "survive_official": 2,
+   "mutation_score_official": 0.6666666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "256",
+      "expected": "1 2 4 8 16 32 64 128 256",
+      "mutant_output": ""
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1000",
+      "expected": "1 2 4 5 8 10 20 25 40 50 100 125 200 250 500 1000",
+      "mutant_output": "1 2 4 5 10 20 25 50 100"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H15",
+   "title": "Tape Walk Final Position",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 7,
+   "survive_official": 1,
+   "mutation_score_official": 0.8571428571428571,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "last_digit_only",
+     "family": "digit_limit",
+     "witness": {
+      "input": "RRRLRRRRRLRRRRRLLRLRR",
+      "expected": "11",
+      "mutant_output": "1"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H16",
+   "title": "Longest Run Length",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 8,
+   "survive_official": 4,
+   "mutation_score_official": 0.5,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expected": "300",
+      "mutant_output": "44"
+     }
+    },
+    {
+     "mutant": "last_digit_only",
+     "family": "digit_limit",
+     "witness": {
+      "input": "aaaaaaaaaa",
+      "expected": "10",
+      "mutant_output": "0"
+     }
+    },
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "aaaaaaaaa",
+      "expected": "9",
+      "mutant_output": "8"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "aaaaaaaaaaaaaaaaa",
+      "expected": "17",
+      "mutant_output": "16"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H17",
+   "title": "Most Frequent Value",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 2,
+   "mutation_score_official": 0.5,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "1\n-1",
+      "expected": "-1",
+      "mutant_output": "255"
+     }
+    },
+    {
+     "mutant": "sign_ignored",
+     "family": "sign",
+     "witness": {
+      "input": "1\n-1",
+      "expected": "-1",
+      "mutant_output": "1"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H18",
+   "title": "Divisible By 3",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 2,
+   "survive_official": 2,
+   "mutation_score_official": 0.0,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "last_digit",
+     "family": "specific",
+     "witness": {
+      "input": "10",
+      "expected": "no",
+      "mutant_output": "yes"
+     }
+    },
+    {
+     "mutant": "last_9_digits",
+     "family": "specific",
+     "witness": {
+      "input": "1099996300",
+      "expected": "no",
+      "mutant_output": "yes"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H19",
+   "title": "Plus Minus Reset Machine",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 7,
+   "survive_official": 1,
+   "mutation_score_official": 0.8571428571428571,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "last_digit_only",
+     "family": "digit_limit",
+     "witness": {
+      "input": "00-+++0+0++++++0++000++00+-++-+-++-0+-+--++++0+00++-++---0+0++++++-+++++++++--+",
+      "expected": "13",
+      "mutant_output": "3"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "H20",
+   "title": "Sort Strings Lexicographically",
+   "difficulty": "hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 2,
+   "survive_official": 2,
+   "mutation_score_official": 0.0,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "case_insensitive",
+     "family": "specific",
+     "witness": {
+      "input": "2\nZ\na",
+      "expected": "Z a",
+      "mutant_output": "a Z"
+     }
+    },
+    {
+     "mutant": "by_length",
+     "family": "specific",
+     "witness": {
+      "input": "2\na\nBAC",
+      "expected": "BAC a",
+      "mutant_output": "a BAC"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X01",
+   "title": "Prime Factorization",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 6,
+   "survive_official": 2,
+   "mutation_score_official": 0.6666666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "256",
+      "expected": "2 2 2 2 2 2 2 2",
+      "mutant_output": ""
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1000",
+      "expected": "2 2 2 5 5 5",
+      "mutant_output": "2 2 5 5"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X02",
+   "title": "Longest Increasing Subsequence Length",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 5,
+   "survive_official": 2,
+   "mutation_score_official": 0.6,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "2\n-2 1",
+      "expected": "2",
+      "mutant_output": "1"
+     }
+    },
+    {
+     "mutant": "sign_ignored",
+     "family": "sign",
+     "witness": {
+      "input": "2\n-2 1",
+      "expected": "2",
+      "mutant_output": "1"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X03",
+   "title": "Matrix Multiplication Result Element",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 9,
+   "survive_official": 4,
+   "mutation_score_official": 0.5555555555555556,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "1 1 1\n-3\n4\n0 0",
+      "expected": "-12",
+      "mutant_output": "1012"
+     }
+    },
+    {
+     "mutant": "sign_ignored",
+     "family": "sign",
+     "witness": {
+      "input": "1 1 1\n-3\n4\n0 0",
+      "expected": "-12",
+      "mutant_output": "12"
+     }
+    },
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "1 1 1\n-3\n4\n0 0",
+      "expected": "-12",
+      "mutant_output": "244"
+     }
+    },
+    {
+     "mutant": "unsigned_output",
+     "family": "sign",
+     "witness": {
+      "input": "1 1 1\n-3\n4\n0 0",
+      "expected": "-12",
+      "mutant_output": "12"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X04",
+   "title": "Evaluate Postfix Expression",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 7,
+   "survive_official": 3,
+   "mutation_score_official": 0.5714285714285714,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "floor_division",
+     "family": "specific",
+     "witness": {
+      "input": "0 8 - 7 /",
+      "expected": "-1",
+      "mutant_output": "-2"
+     }
+    },
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "0 1 -",
+      "expected": "-1",
+      "mutant_output": "255"
+     }
+    },
+    {
+     "mutant": "unsigned_output",
+     "family": "sign",
+     "witness": {
+      "input": "0 1 -",
+      "expected": "-1",
+      "mutant_output": "1"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X05",
+   "title": "Merge Two Sorted Arrays",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 6,
+   "survive_official": 1,
+   "mutation_score_official": 0.8333333333333334,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "first_2_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "255\n256",
+      "expected": "255 256",
+      "mutant_output": "25 25"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X06",
+   "title": "Compute Power Modulo",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 10,
+   "survive_official": 4,
+   "mutation_score_official": 0.6,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "e0_forgets_mod",
+     "family": "specific",
+     "witness": {
+      "input": "5 0 1",
+      "expected": "0",
+      "mutant_output": "1"
+     }
+    },
+    {
+     "mutant": "u32_overflow",
+     "family": "specific",
+     "witness": {
+      "input": "27 9 89370",
+      "expected": "85077",
+      "mutant_output": "67095"
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1000 1 7",
+      "expected": "6",
+      "mutant_output": "2"
+     }
+    },
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "519 3 999",
+      "expected": "297",
+      "mutant_output": "41"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X07",
+   "title": "Longest Palindromic Substring Length",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 7,
+   "survive_official": 3,
+   "mutation_score_official": 0.5714285714285714,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "last_digit_only",
+     "family": "digit_limit",
+     "witness": {
+      "input": "baabbbbaab",
+      "expected": "10",
+      "mutant_output": "0"
+     }
+    },
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "aabaaaaaa",
+      "expected": "6",
+      "mutant_output": "5"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "abbaaaababbabaaaa",
+      "expected": "14",
+      "mutant_output": "12"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X08",
+   "title": "Count Set Bits In Range",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 10,
+   "survive_official": 4,
+   "mutation_score_official": 0.6,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "0 256",
+      "expected": "1025",
+      "mutant_output": "0"
+     }
+    },
+    {
+     "mutant": "first_2_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "0 153",
+      "expected": "531",
+      "mutant_output": "32"
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "0 1023",
+      "expected": "5120",
+      "mutant_output": "327"
+     }
+    },
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "1 87",
+      "expected": "268",
+      "mutant_output": "12"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X09",
+   "title": "Bracket Depth Maximum",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 8,
+   "survive_official": 4,
+   "mutation_score_official": 0.5,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((",
+      "expected": "300",
+      "mutant_output": "44"
+     }
+    },
+    {
+     "mutant": "last_digit_only",
+     "family": "digit_limit",
+     "witness": {
+      "input": ")((((((((((((())",
+      "expected": "13",
+      "mutant_output": "3"
+     }
+    },
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "((()(()((",
+      "expected": "5",
+      "mutant_output": "4"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "())(((()()(((((((",
+      "expected": "10",
+      "mutant_output": "9"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X10",
+   "title": "String Rotation Check",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 3,
+   "survive_official": 1,
+   "mutation_score_official": 0.6666666666666666,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "aaaabccbb\nbaaaabccb",
+      "expected": "yes",
+      "mutant_output": "no"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X11",
+   "title": "Count Inversions",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 9,
+   "survive_official": 5,
+   "mutation_score_official": 0.4444444444444444,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "counts_equal_pairs",
+     "family": "specific",
+     "witness": {
+      "input": "2\n1 1",
+      "expected": "0",
+      "mutant_output": "1"
+     }
+    },
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "2\n-8 0",
+      "expected": "0",
+      "mutant_output": "1"
+     }
+    },
+    {
+     "mutant": "first_1_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "2\n16 2",
+      "expected": "1",
+      "mutant_output": "0"
+     }
+    },
+    {
+     "mutant": "sign_ignored",
+     "family": "sign",
+     "witness": {
+      "input": "2\n-8 0",
+      "expected": "0",
+      "mutant_output": "1"
+     }
+    },
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "30\n30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1",
+      "expected": "435",
+      "mutant_output": "179"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X12",
+   "title": "Least Common Multiple",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 10,
+   "survive_official": 3,
+   "mutation_score_official": 0.7,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "1 256",
+      "expected": "256",
+      "mutant_output": "0"
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1 1380",
+      "expected": "1380",
+      "mutant_output": "138"
+     }
+    },
+    {
+     "mutant": "byte_output",
+     "family": "byte_cell",
+     "witness": {
+      "input": "1 256",
+      "expected": "256",
+      "mutant_output": "0"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X13",
+   "title": "Valid Parentheses Types",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 4,
+   "survive_official": 2,
+   "mutation_score_official": 0.5,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "(()([][]))",
+      "expected": "yes",
+      "mutant_output": "no"
+     }
+    },
+    {
+     "mutant": "buffer_16",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "[]{[{}{[{{[]}}]}]}",
+      "expected": "yes",
+      "mutant_output": "no"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X14",
+   "title": "Next Greater Element",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 5,
+   "survive_official": 3,
+   "mutation_score_official": 0.4,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "greater_or_equal",
+     "family": "specific",
+     "witness": {
+      "input": "2\n23 23",
+      "expected": "-1 -1",
+      "mutant_output": "23 -1"
+     }
+    },
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "2\n-7 0",
+      "expected": "0 -1",
+      "mutant_output": "-1 -1"
+     }
+    },
+    {
+     "mutant": "sign_ignored",
+     "family": "sign",
+     "witness": {
+      "input": "2\n-7 0",
+      "expected": "0 -1",
+      "mutant_output": "-1 -1"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X15",
+   "title": "Spiral Matrix Traversal",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 2,
+   "survive_official": 0,
+   "mutation_score_official": 1.0,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X16",
+   "title": "Hamming Distance",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 9,
+   "survive_official": 4,
+   "mutation_score_official": 0.5555555555555556,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "low_byte_only",
+     "family": "specific",
+     "witness": {
+      "input": "0 256",
+      "expected": "1",
+      "mutant_output": "0"
+     }
+    },
+    {
+     "mutant": "byte_input",
+     "family": "byte_cell",
+     "witness": {
+      "input": "0 256",
+      "expected": "1",
+      "mutant_output": "0"
+     }
+    },
+    {
+     "mutant": "first_3_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1000 1",
+      "expected": "7",
+      "mutant_output": "4"
+     }
+    },
+    {
+     "mutant": "last_digit_only",
+     "family": "digit_limit",
+     "witness": {
+      "input": "1023 0",
+      "expected": "10",
+      "mutant_output": "0"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X17",
+   "title": "Roman To Integer",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 7,
+   "survive_official": 1,
+   "mutation_score_official": 0.8571428571428571,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "buffer_8",
+     "family": "fixed_buffer",
+     "witness": {
+      "input": "CCCLXXXIV",
+      "expected": "384",
+      "mutant_output": "381"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X18",
+   "title": "Integer To Roman",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 6,
+   "survive_official": 0,
+   "mutation_score_official": 1.0,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X19",
+   "title": "Permutation Check",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 2,
+   "survive_official": 1,
+   "mutation_score_official": 0.5,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "first_1_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "10\n1 9 10 5 8 2 3 6 7 4",
+      "expected": "yes",
+      "mutant_output": "no"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  },
+  {
+   "pid": "X20",
+   "title": "Josephus Problem",
+   "difficulty": "extra_hard",
+   "official_tests": 6,
+   "official_tests_public": true,
+   "mutants_valid": 7,
+   "survive_official": 2,
+   "mutation_score_official": 0.7142857142857143,
+   "mutation_score_fresh": 1.0,
+   "surviving_mutants": [
+    {
+     "mutant": "first_2_digits",
+     "family": "digit_limit",
+     "witness": {
+      "input": "51 100",
+      "expected": "34",
+      "mutant_output": "46"
+     }
+    },
+    {
+     "mutant": "last_digit_only",
+     "family": "digit_limit",
+     "witness": {
+      "input": "13 2",
+      "expected": "11",
+      "mutant_output": "1"
+     }
+    }
+   ],
+   "impossible_variant_ok": true
+  }
+ ]
+}
