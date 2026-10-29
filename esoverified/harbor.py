@@ -167,12 +167,18 @@ allowed; only `/app/solution{ext}` is graded.
 {card_for(lang)}"""
 
 
-def _task_toml(pid: str, lang: str, tests_mode: str, seed_note: str) -> str:
+def _task_toml(pid: str, lang: str, tests_mode: str, seed_note: str, isolated: bool = True) -> str:
     p = get_problem(pid)
     timeout = 1800.0
+    ext = EXTENSIONS[lang]
+    # Isolated grading: Harbor collects only the solution file, stops the agent's
+    # container, then grades in a fresh one, so nothing the agent left running can
+    # touch the tests or the grader.
+    artifacts = f'["/app/solution{ext}"]' if isolated else "[]"
+    mode = 'environment_mode = "separate"\n' if isolated else ""
     return f"""# {CANARY}
 schema_version = "1.3"
-artifacts = []
+artifacts = {artifacts}
 
 [metadata]
 author_name = "EsoLang-Verified {__version__}"
@@ -183,7 +189,7 @@ source = "EsoLang-Bench {pid} (Sharma & Chopra, 2026); protocol of arXiv:2606.10
 tests = "{seed_note}"
 
 [verifier]
-timeout_sec = 900.0
+{mode}timeout_sec = 900.0
 collect = []
 
 [verifier.env]
@@ -223,7 +229,7 @@ def task_tests(pid: str, mode: str, seed: int, n_random: int) -> List[Test]:
 
 
 def write_task(out: Path, pid: str, language: str, oracle: str, tests: Sequence[Test], *, tests_mode: str,
-               seed_note: str, policy: str = "newline") -> Path:
+               seed_note: str, policy: str = "newline", isolated: bool = True) -> Path:
     lang = canonical_language(language)
     ext = EXTENSIONS[lang]
     d = out / f"esolang-{SHORT[lang]}-{pid.lower()}"
@@ -232,7 +238,7 @@ def write_task(out: Path, pid: str, language: str, oracle: str, tests: Sequence[
     (d / "environment").mkdir(parents=True)
     (d / "tests").mkdir()
     (d / "solution").mkdir()
-    (d / "task.toml").write_text(_task_toml(pid, lang, tests_mode, seed_note))
+    (d / "task.toml").write_text(_task_toml(pid, lang, tests_mode, seed_note, isolated))
     (d / "instruction.md").write_text(_instruction(pid, lang, policy, len(tests)))
     _copy_esorun(d / "environment")
     (d / "environment" / "Dockerfile").write_text(
@@ -240,6 +246,8 @@ def write_task(out: Path, pid: str, language: str, oracle: str, tests: Sequence[
         "RUN printf '#!/bin/sh\\nPYTHONPATH=/opt/esorun exec python3 -m esorun \"$@\"\\n' > /usr/local/bin/esorun"
         " && chmod +x /usr/local/bin/esorun\nWORKDIR /app\n")
     _copy_esorun(d / "tests")
+    if isolated:  # the separate verifier container is built from tests/
+        (d / "tests" / "Dockerfile").write_text(f"# {CANARY}\nFROM python:3.12-slim\nCOPY . /tests\nWORKDIR /app\n")
     (d / "tests" / "hidden.json").write_text(json.dumps(
         {"canary": CANARY, "tests": [{"input": i, "output": o} for i, o in tests]}))
     (d / "tests" / "verify.py").write_text(VERIFY_PY.format(ext=ext, policy=policy, language=lang))
@@ -254,7 +262,7 @@ def write_task(out: Path, pid: str, language: str, oracle: str, tests: Sequence[
 
 def export_tasks(out: Path, languages: Sequence[str], pids: Sequence[str] = (), *, tests_mode: str = "fresh",
                  seed: int = 0, n_random: int = 30, policy: str = "newline", require_verified: bool = True,
-                 oracle_dir: Optional[Path] = None) -> Dict[str, object]:
+                 oracle_dir: Optional[Path] = None, isolated: bool = True) -> Dict[str, object]:
     """Write tasks; skip a (language, problem) whose oracle fails its own tests when
     require_verified (impossible-mode tasks are written regardless: no oracle can pass)."""
     out.mkdir(parents=True, exist_ok=True)
@@ -273,9 +281,11 @@ def export_tasks(out: Path, languages: Sequence[str], pids: Sequence[str] = (), 
                     skipped.append({"language": lang, "pid": pid, "passed": chk.fresh_passed,
                                     "total": chk.fresh_total, "max_steps": chk.max_steps})
                     continue
-            d = write_task(out, pid, lang, oracle, tests, tests_mode=tests_mode, seed_note=seed_note, policy=policy)
+            d = write_task(out, pid, lang, oracle, tests, tests_mode=tests_mode, seed_note=seed_note, policy=policy,
+                           isolated=isolated)
             written.append(d.name)
     manifest = {"canary": CANARY, "generator": f"esolang-verified {__version__}", "tests_mode": tests_mode,
-                "seed": seed, "policy": policy, "tasks": written, "skipped_unverified_oracle": skipped}
+                "seed": seed, "policy": policy, "isolated_verifier": isolated, "tasks": written,
+                "skipped_unverified_oracle": skipped}
     (out / "manifest.json").write_text(json.dumps(manifest, indent=1))
     return manifest

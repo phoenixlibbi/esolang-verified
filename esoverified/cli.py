@@ -157,7 +157,7 @@ def cmd_harbor(a) -> int:
     from .harbor import export_tasks
     m = export_tasks(Path(a.out), a.languages, a.problems, tests_mode=a.tests, seed=a.seed, n_random=a.n_random,
                      policy=a.policy, require_verified=not a.allow_unverified,
-                     oracle_dir=Path(a.oracle_dir) if a.oracle_dir else None)
+                     oracle_dir=Path(a.oracle_dir) if a.oracle_dir else None, isolated=not a.shared_verifier)
     print(f"wrote {len(m['tasks'])} tasks to {a.out}; skipped {len(m['skipped_unverified_oracle'])} "
           "whose oracle does not pass its own tests within the step limit")
     return 0
@@ -267,6 +267,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--policy", default="newline", choices=["official", "exact", "newline"])
     p.add_argument("--oracle-dir", help="reuse oracles written by `esoverified oracles`")
     p.add_argument("--allow-unverified", action="store_true")
+    p.add_argument("--shared-verifier", action="store_true",
+                   help="grade in the agent's container (faster, but the agent's leftovers can reach the grader)")
     p.set_defaults(fn=cmd_harbor)
 
     p = sub.add_parser("report", help="write per-problem report cards")

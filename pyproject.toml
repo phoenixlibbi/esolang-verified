@@ -31,5 +31,5 @@ packages = ["esoverified"]
 [tool.pytest.ini_options]
 markers = ["docker: needs a Docker daemon (deselect with -m 'not docker')",
            "slow: long-running (deselect with -m 'not slow')"]
-addopts = "-m 'not docker'"
+addopts = "-m 'not docker and not slow'"
 testpaths = ["tests"]

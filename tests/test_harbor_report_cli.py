@@ -36,10 +36,20 @@ def test_export_and_verify_tasks(tmp_path):
         assert (task / f).exists(), f
     assert "Language Reference" in (task / "instruction.md").read_text()
     assert "hidden" not in (task / "environment" / "Dockerfile").read_text()
+    toml = (task / "task.toml").read_text()
+    assert 'environment_mode = "separate"' in toml and '"/app/solution.b98"' in toml   # isolated grading
+    assert "COPY . /tests" in (task / "tests" / "Dockerfile").read_text()
     oracle = (task / "solution" / "oracle.b98").read_text()
     assert _verify_locally(task, oracle, tmp_path / "a") == {"reward": 1.0, "fraction": 1.0}
     r = _verify_locally(task, "@", tmp_path / "b")
     assert r["reward"] == 0.0 and r["fraction"] < 1.0
+
+
+def test_shared_verifier_option(tmp_path):
+    export_tasks(tmp_path / "t", ["whitespace"], ["E01"], seed=1, isolated=False)
+    task = tmp_path / "t" / "esolang-ws-e01"
+    assert "environment_mode" not in (task / "task.toml").read_text()
+    assert not (task / "tests" / "Dockerfile").exists()
 
 
 def test_impossible_tasks_reward_zero_for_the_oracle(tmp_path):
