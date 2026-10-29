@@ -9,7 +9,8 @@ in `esoforge/dataset.py` and checked on load.
 
 ## Official interpreters and harness (MIT)
 `esoforge/upstream/*.py` are unmodified copies of `benchmark_harness/interpreters/*.py` and
-`benchmark_harness/harness.py` from
+`benchmark_harness/harness.py` (renamed `official_harness.py`), and `esoforge/upstream/prompts/<lang>.md`
+are unmodified copies of `prompts/<lang>/CLAUDE.md`, from
 [Lossfunk/esolang-metaprogramming](https://github.com/Lossfunk/esolang-metaprogramming) at commit
 `b93ef26f1ff0c08a957c0ecc8397f21eb9ec247d` (Sharma, Thorat & Chopra, 2026, arXiv:2606.10933),
 MIT licence, copied in `esoforge/upstream/LICENSE`. Their hashes are pinned in
