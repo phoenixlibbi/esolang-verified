@@ -1,6 +1,6 @@
-from esoforge.audit import audit_problem, summarize
-from esoforge.mutants import Mutant
-from esoforge.problems import get_spec
+from esoverified.audit import audit_problem, summarize
+from esoverified.mutants import Mutant
+from esoverified.problems import get_spec
 
 
 def _by_name(audit, name):

@@ -4,7 +4,7 @@ Two sources:
 
 * problem-specific logic slips written next to each reference solution
   (floor instead of truncating division, case-insensitive compare, ties broken the
-  wrong way, ...), see :mod:`esoforge.problems`;
+  wrong way, ...), see :mod:`esoverified.problems`;
 * generic esolang bugs applied by tag: values stored in one 8-bit cell, signs dropped,
   only the first k digits parsed, fixed-size input buffers, single-digit printing,
   off-by-one outputs.

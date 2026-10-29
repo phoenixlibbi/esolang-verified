@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "esolang-env-forge"
+name = "esolang-verified"
 version = "0.1.0"
 description = "Verified, contamination-resistant RL environments and a model-free audit toolkit for unfamiliar-language coding tasks (EsoLang-Bench): fast interpreters, reference oracles, a compiler to Brainfuck/Befunge-98/Whitespace, mutation-score test audits, fresh private tests, harness exploit probes, and Harbor / verifiers packaging."
 readme = "README.md"
@@ -19,14 +19,14 @@ keywords = ["esolang-bench", "reinforcement-learning", "rlvr", "rl-environments"
 dev = ["pytest>=8"]
 
 [project.urls]
-Homepage = "https://github.com/phoenixlibbi/esolang-env-forge"
-Issues = "https://github.com/phoenixlibbi/esolang-env-forge/issues"
+Homepage = "https://github.com/phoenixlibbi/esolang-verified"
+Issues = "https://github.com/phoenixlibbi/esolang-verified/issues"
 
 [project.scripts]
-esoforge = "esoforge.cli:main"
+esoverified = "esoverified.cli:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["esoforge"]
+packages = ["esoverified"]
 
 [tool.pytest.ini_options]
 markers = ["docker: needs a Docker daemon (deselect with -m 'not docker')",

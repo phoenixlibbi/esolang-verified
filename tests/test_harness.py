@@ -3,8 +3,8 @@ import sys
 
 import pytest
 
-from esoforge.esoc.bfgen import print_text
-from esoforge.harness import GraderServer, HarnessConfig, Session, request, write_client
+from esoverified.esoc.bfgen import print_text
+from esoverified.harness import GraderServer, HarnessConfig, Session, request, write_client
 
 
 def _session(**kw):

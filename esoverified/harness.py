@@ -267,7 +267,7 @@ def request(address: str, payload: Dict[str, object], timeout: float = 600.0) ->
 # ------------------------------------------------------------------ agent client
 
 CLIENT_TEMPLATE = '''#!/usr/bin/env python3
-"""Agent-side client for the esoforge grader. Usage:
+"""Agent-side client for the esoverified grader. Usage:
   python harness.py fetch | status | skip
   python harness.py run <file> --input "..."
   python harness.py submit <PROBLEM_ID> <file>

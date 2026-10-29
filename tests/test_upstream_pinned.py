@@ -1,7 +1,7 @@
 """The vendored upstream files must stay byte-identical to the pinned commit."""
 import hashlib
 
-from esoforge.upstream import UPSTREAM_DIR
+from esoverified.upstream import UPSTREAM_DIR
 
 PINNED = {
     "befunge98_interpreter.py": "ae51aa4585b2cab95e2c0b83a80a3a5043e4f7a9521c309ac60257c2862956fb",

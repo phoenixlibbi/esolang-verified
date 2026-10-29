@@ -1,5 +1,5 @@
 """Language reference cards: the "<Language> Language Reference" section of the
-paper's per-language prompt (vendored unmodified in ``esoforge/upstream/prompts``)."""
+paper's per-language prompt (vendored unmodified in ``esoverified/upstream/prompts``)."""
 
 from __future__ import annotations
 

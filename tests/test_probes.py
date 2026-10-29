@@ -1,5 +1,5 @@
-"""Every exploit works on the paper's harness and none works on esoforge's."""
-from esoforge.probes import HARDENED_PROBES, PROBES, run_hardened_probes, run_official_probes
+"""Every exploit works on the paper's harness and none works on esoverified's."""
+from esoverified.probes import HARDENED_PROBES, PROBES, run_hardened_probes, run_official_probes
 
 
 def test_official_harness_is_exploitable_by_every_probe():

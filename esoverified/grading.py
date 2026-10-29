@@ -54,9 +54,9 @@ class GradeResult:
 
 def grade_program(language: str, program: str, tests: Sequence[Tuple[str, str]], *,
                   policy: str = "official", dialect: str = "official",
-                  max_steps: int = DEFAULT_MAX_STEPS, engine: str = "esoforge") -> GradeResult:
+                  max_steps: int = DEFAULT_MAX_STEPS, engine: str = "esoverified") -> GradeResult:
     """Run `program` on every (input, expected) pair. ``engine="upstream"`` uses the
-    paper's own interpreters (slower; esoforge's are differential-tested against them)."""
+    paper's own interpreters (slower; esoverified's are differential-tested against them)."""
     results: List[TestResult] = []
     passed = 0
     for inp, exp in tests:

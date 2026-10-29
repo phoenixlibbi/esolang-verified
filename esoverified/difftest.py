@@ -1,6 +1,6 @@
 """Differential testing of interpreters.
 
-1. ``fuzz``: random programs run on esoforge's interpreter (official dialect) and on the
+1. ``fuzz``: random programs run on esoverified's interpreter (official dialect) and on the
    paper's interpreter; output, success and error kind must agree.
 2. ``dialect_gaps``: programs whose result differs between the official and the spec
    dialect, i.e. programs that depend on a quirk of the official interpreter.
@@ -37,7 +37,7 @@ def upstream_outcome(language: str, program: str, inp: str, max_steps: int) -> O
         return Outcome(None, f"PythonError:{type(e).__name__}")
 
 
-def esoforge_outcome(language: str, program: str, inp: str, max_steps: int,
+def esoverified_outcome(language: str, program: str, inp: str, max_steps: int,
                      dialect: str = "official") -> Outcome:
     r = run(language, program, inp, dialect=dialect, max_steps=max_steps)
     return Outcome(r.output, None if r.ok else r.error.split(":", 1)[0])  # type: ignore[union-attr]
@@ -125,12 +125,12 @@ def fuzz(language: str, cases: int = 500, seed: int = 0, max_steps: int = 5_000)
     for _ in range(cases):
         prog = gen(rng)
         inp = random_input(rng)
-        a = esoforge_outcome(language, prog, inp, max_steps)
+        a = esoverified_outcome(language, prog, inp, max_steps)
         b = upstream_outcome(language, prog, inp, max_steps)
         if a.key() == b.key():
             agree += 1
         else:
-            bad.append({"program": prog, "input": inp, "esoforge": a.key(), "official": b.key()})
+            bad.append({"program": prog, "input": inp, "esoverified": a.key(), "official": b.key()})
     return FuzzReport(language, cases, agree, bad)
 
 
@@ -141,8 +141,8 @@ def dialect_gaps(language: str, cases: int = 500, seed: int = 0, max_steps: int 
     for _ in range(cases):
         prog = gen(rng)
         inp = random_input(rng)
-        a = esoforge_outcome(language, prog, inp, max_steps, "official")
-        b = esoforge_outcome(language, prog, inp, max_steps, "spec")
+        a = esoverified_outcome(language, prog, inp, max_steps, "official")
+        b = esoverified_outcome(language, prog, inp, max_steps, "spec")
         if a.key() != b.key():
             gaps.append({"program": prog, "input": inp, "official": a.key(), "spec": b.key()})
     return gaps

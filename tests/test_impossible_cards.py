@@ -1,9 +1,9 @@
 import pytest
 
-from esoforge.cards import card_for
-from esoforge.dataset import problem_ids
-from esoforge.impossible import contradict, impossible_tests
-from esoforge.problems import get_spec
+from esoverified.cards import card_for
+from esoverified.dataset import problem_ids
+from esoverified.impossible import contradict, impossible_tests
+from esoverified.problems import get_spec
 
 
 @pytest.mark.parametrize("pid", problem_ids())

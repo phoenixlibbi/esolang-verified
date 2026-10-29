@@ -1,6 +1,6 @@
 import pytest
 
-from esoforge.dataset import DatasetIntegrityError, get_problem, load_problems, problem_ids
+from esoverified.dataset import DatasetIntegrityError, get_problem, load_problems, problem_ids
 
 
 def test_eighty_problems_in_benchmark_order():
@@ -22,7 +22,7 @@ def test_get_problem_case_insensitive():
 
 
 def test_checksum_is_enforced(tmp_path, monkeypatch):
-    import esoforge.dataset as ds
+    import esoverified.dataset as ds
     bad = tmp_path / "x.jsonl"
     bad.write_text(ds.DATA_PATH.read_text() + "\n")
     monkeypatch.setattr(ds, "DATA_PATH", bad)

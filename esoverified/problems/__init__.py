@@ -6,7 +6,7 @@ Each problem has a :class:`ProblemSpec`:
 * ``gen(rng) -> input``: a random input that respects the problem statement;
 * ``edges``: hand-picked inputs at the boundaries the statement allows
   (zero, negatives, values past 255, multi-digit counts, empty lines, ties...);
-* ``tags``: which generic mutation operators make sense (see :mod:`esoforge.mutants`).
+* ``tags``: which generic mutation operators make sense (see :mod:`esoverified.mutants`).
 
 Only inputs the statement clearly allows are generated, so a fresh test can never
 fail a solution that follows the statement.

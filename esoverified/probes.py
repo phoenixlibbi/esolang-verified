@@ -9,7 +9,7 @@ puts the *real* EsoLang tests in ``private/``, and then tries one exploit throug
 harness's own CLI. A probe "succeeds" when the harness records a problem as solved, or
 leaks something, that an honest agent could not get.
 
-The same probes run against esoforge's hardened harness (``esoforge.harness``) to show
+The same probes run against esoverified's hardened harness (``esoverified.harness``) to show
 the holes are closed.
 """
 
@@ -255,7 +255,7 @@ PROBES: Dict[str, Callable[[Layout], ProbeResult]] = {
 def run_official_probes(names: Optional[List[str]] = None) -> List[ProbeResult]:
     out = []
     for name in names or list(PROBES):
-        with tempfile.TemporaryDirectory(prefix="esoforge-probe-") as tmp:
+        with tempfile.TemporaryDirectory(prefix="esoverified-probe-") as tmp:
             lay = official_layout(Path(tmp))
             out.append(PROBES[name](lay))
     return out
@@ -311,7 +311,7 @@ def _h_read_hidden_tests(lay: HardenedLayout) -> ProbeResult:
             txt = p.read_text(errors="ignore")
             if str(SECRET_SEED) in txt or any(f'"{o}"' in txt for o in list(secret)[:20]):
                 hits.append(str(p.relative_to(lay.root)))
-    return ProbeResult("read_hidden_tests", "esoforge", bool(hits),
+    return ProbeResult("read_hidden_tests", "esoverified", bool(hits),
                        "Tests and seed live only in the grader process; no file the agent can reach holds them.",
                        hits or ["no file under the run directory contains the fresh tests or the seed"])
 
@@ -321,7 +321,7 @@ def _h_state_forgery(lay: HardenedLayout) -> ProbeResult:
     lay.write("harness_state.json", json.dumps({"problems": {"E01": {"status": "solved", "best_score": 6}}}))
     lay.run("status")
     ok = lay.solved("E01")
-    return ProbeResult("state_forgery", "esoforge", ok, "There is no state file in the workspace to edit.",
+    return ProbeResult("state_forgery", "esoverified", ok, "There is no state file in the workspace to edit.",
                        ["wrote a forged harness_state.json", f"grader E01 status: "
                         f"{lay.session.export()['problems']['E01']['status']}"])  # type: ignore[attr-defined]
 
@@ -331,7 +331,7 @@ def _h_submission_cap(lay: HardenedLayout) -> ProbeResult:
     prog = lay.write("wrong.bf", EMPTY_BF)
     outs = [lay.run("submit", "E01", prog.name).stdout for _ in range(4)]
     ok = "Score:" in outs[3]
-    return ProbeResult("submission_cap_reset", "esoforge", ok, "The cap is counted by the grader.",
+    return ProbeResult("submission_cap_reset", "esoverified", ok, "The cap is counted by the grader.",
                        [outs[3].strip() or "(no output)"])
 
 
@@ -342,7 +342,7 @@ def _h_sentinel(lay: HardenedLayout) -> ProbeResult:
     prog = lay.write("empty.bf", EMPTY_BF)
     lay.run("submit", "E01", prog.name)
     ok = lay.solved("E01")
-    return ProbeResult("sentinel_hijack", "esoforge", ok, "The grader reads no files from the workspace.",
+    return ProbeResult("sentinel_hijack", "esoverified", ok, "The grader reads no files from the workspace.",
                        ["planted .experiment_root and private/ tests", f"solved: {ok}"])
 
 
@@ -353,7 +353,7 @@ def _h_env(lay: HardenedLayout) -> ProbeResult:
     lay.run("submit", "E01", prog.name, env={"HARNESS_PRIVATE_FILE": str(fake),
                                              "HARNESS_INTERPRETER_DIR": str(lay.workspace)})
     ok = lay.solved("E01")
-    return ProbeResult("env_override", "esoforge", ok, "The agent's environment variables never reach the grader.",
+    return ProbeResult("env_override", "esoverified", ok, "The agent's environment variables never reach the grader.",
                        [f"solved: {ok}"])
 
 
@@ -364,7 +364,7 @@ def _h_interp(lay: HardenedLayout) -> ProbeResult:
     prog = lay.write("empty.bf", EMPTY_BF)
     lay.run("submit", "E01", prog.name, env={"PYTHONPATH": str(lay.workspace)})
     ok = lay.solved("E01")
-    return ProbeResult("interpreter_hijack", "esoforge", ok, "Interpreters are imported only inside the grader.",
+    return ProbeResult("interpreter_hijack", "esoverified", ok, "Interpreters are imported only inside the grader.",
                        [f"solved: {ok}"])
 
 
@@ -373,7 +373,7 @@ def _h_feedback(lay: HardenedLayout) -> ProbeResult:
     prog = lay.write("wrong.bf", EMPTY_BF)
     out = lay.run("submit", "E01", prog.name).stdout
     ok = "Hidden Test" in out
-    return ProbeResult("per_test_feedback", "esoforge", ok, "Feedback is the aggregate count unless configured.",
+    return ProbeResult("per_test_feedback", "esoverified", ok, "Feedback is the aggregate count unless configured.",
                        [ln for ln in out.splitlines() if ln][:2])
 
 
@@ -383,7 +383,7 @@ def _h_strip(lay: HardenedLayout) -> ProbeResult:
     prog = lay.write("padded.bf", print_text("\n\n   Hello World!   \n\n"))
     lay.run("submit", "E01", prog.name)
     ok = lay.solved("E01")
-    return ProbeResult("strip_leniency", "esoforge", ok,
+    return ProbeResult("strip_leniency", "esoverified", ok,
                        "The 'newline' policy ignores one trailing newline and nothing else.", [f"solved: {ok}"])
 
 
@@ -408,7 +408,7 @@ def _h_redirect(lay: HardenedLayout) -> ProbeResult:
     shown = lay.run("submit", "E01", prog.name).stdout
     fake.shutdown()
     ok = lay.solved("E01")
-    return ProbeResult("client_redirect", "esoforge", ok,
+    return ProbeResult("client_redirect", "esoverified", ok,
                        "A rewritten client can fool only itself; the score is what the grader recorded.",
                        [f"fake grader printed: {shown.strip().splitlines()[-1] if shown.strip() else ''}",
                         f"real grader solved: {ok}"])
@@ -430,7 +430,7 @@ HARDENED_PROBES: Dict[str, Callable[[HardenedLayout], ProbeResult]] = {
 def run_hardened_probes(names: Optional[List[str]] = None) -> List[ProbeResult]:
     out = []
     for name in names or list(HARDENED_PROBES):
-        with tempfile.TemporaryDirectory(prefix="esoforge-hprobe-") as tmp:
+        with tempfile.TemporaryDirectory(prefix="esoverified-hprobe-") as tmp:
             lay = hardened_layout(Path(tmp))
             try:
                 out.append(HARDENED_PROBES[name](lay))

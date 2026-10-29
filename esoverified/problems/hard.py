@@ -94,10 +94,14 @@ def _eval_right_minus(e: str) -> int:
 
 
 def _expr_gen(r) -> str:
+    # at most 4 factors per product keeps every intermediate value below 2**46
     n = r.randint(1, 6)
     parts = [str(num(r, 1, 999))]
+    chain = 1
     for _ in range(n - 1):
-        parts += [r.choice("+-*"), str(num(r, 1, 999))]
+        op = r.choice("+-*") if chain < 4 else r.choice("+-")
+        chain = chain + 1 if op == "*" else 1
+        parts += [op, str(num(r, 1, 999))]
     return "".join(parts)
 
 

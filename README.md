@@ -1,4 +1,4 @@
-# EsoLang Env Forge
+# EsoLang-Verified
 
 Verified, contamination-resistant RL environments and a model-free audit toolkit for
 unfamiliar-language coding tasks, built on EsoLang-Bench and the protocol of

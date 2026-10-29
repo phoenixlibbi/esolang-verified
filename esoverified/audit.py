@@ -1,6 +1,6 @@
 """Test-strength audit: how many deliberately wrong programs pass the official tests?
 
-For each problem and each mutant (see :mod:`esoforge.mutants`):
+For each problem and each mutant (see :mod:`esoverified.mutants`):
 
 1. **Is it really wrong?** It must differ from the reference on at least one input from
    a large pool (edge cases + random inputs the statement allows). Mutants that never
@@ -12,7 +12,7 @@ For each problem and each mutant (see :mod:`esoforge.mutants`):
    suite (edges + 30 random tests), which is *not* tuned to the mutants.
 
 Mutation score = killed / non-equivalent. This needs no model: every number is
-reproducible with ``esoforge audit``.
+reproducible with ``esoverified audit``.
 """
 
 from __future__ import annotations

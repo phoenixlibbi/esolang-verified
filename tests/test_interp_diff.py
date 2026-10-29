@@ -1,9 +1,9 @@
-"""esoforge's interpreters (official dialect) must agree with the paper's interpreters."""
+"""esoverified's interpreters (official dialect) must agree with the paper's interpreters."""
 import pytest
 
-from esoforge.difftest import dialect_gaps, esoforge_outcome, fuzz, upstream_outcome
-from esoforge.esoc.wsasm import assemble
-from esoforge.interp import run
+from esoverified.difftest import dialect_gaps, esoverified_outcome, fuzz, upstream_outcome
+from esoverified.esoc.wsasm import assemble
+from esoverified.interp import run
 
 
 @pytest.mark.parametrize("language", ["brainfuck", "whitespace", "befunge98"])
@@ -15,7 +15,7 @@ def test_fuzz_agrees_with_official(language):
 def test_bf_step_limit_matches_exactly():
     prog = "+" * 10 + "[>++++++++++<-]>[-]" + "+" * 50
     for limit in range(1, 400, 7):
-        a = esoforge_outcome("brainfuck", prog, "", limit)
+        a = esoverified_outcome("brainfuck", prog, "", limit)
         b = upstream_outcome("brainfuck", prog, "", limit)
         assert a.key() == b.key(), limit
 

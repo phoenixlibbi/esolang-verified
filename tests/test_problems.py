@@ -2,10 +2,10 @@ import random
 
 import pytest
 
-from esoforge.dataset import load_problems
-from esoforge.freshtests import GoldSanityError, check_reference, fresh_suite, input_pool
-from esoforge.mutants import mutants_for
-from esoforge.problems import all_specs
+from esoverified.dataset import load_problems
+from esoverified.freshtests import GoldSanityError, check_reference, fresh_suite, input_pool
+from esoverified.mutants import mutants_for
+from esoverified.problems import all_specs
 
 PIDS = list(load_problems())
 
@@ -41,7 +41,7 @@ def test_fresh_suite_contains_edges_and_reference_outputs():
 
 
 def test_gold_sanity_rejects_a_broken_reference(monkeypatch):
-    import esoforge.problems as P
+    import esoverified.problems as P
     spec = P.get_spec("E04")
     broken = P.ProblemSpec(spec.pid, lambda s: "0", spec.gen, spec.edges, spec.tags, spec.mutants)
     monkeypatch.setitem(P.REGISTRY, "E04", broken)

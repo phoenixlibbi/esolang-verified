@@ -36,7 +36,7 @@ def _load(module_name: str) -> ModuleType:
         mod = importlib.util.module_from_spec(spec)
         sys.modules["esolang_common"] = mod
         spec.loader.exec_module(mod)  # type: ignore[union-attr]
-    name = f"esoforge_upstream_{module_name}"
+    name = f"esoverified_upstream_{module_name}"
     spec = importlib.util.spec_from_file_location(name, UPSTREAM_DIR / f"{module_name}.py")
     mod = importlib.util.module_from_spec(spec)
     sys.modules[name] = mod  # dataclasses look the module up while the class is built

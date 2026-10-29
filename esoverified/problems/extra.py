@@ -195,8 +195,8 @@ register("X07", lambda s: str(_lps(_line(s))), lambda r: text(r, 1, 30, "aab" if
 
 # X08 ------------------------------------------------------------------------
 register("X08", lambda s: str(sum(bin(v).count("1") for v in range(ints(s)[0], ints(s)[1] + 1))),
-         lambda r: (lambda lo: f"{lo} {lo + r.randint(0, 3000)}")(num(r, 0, 10000)),
-         ["0 0", "7 7", "255 256", "0 1023", "10000 13000"], "int_in int_out", {
+         lambda r: (lambda lo: f"{lo} {lo + r.randint(0, 1000)}")(num(r, 0, 10000)),
+         ["0 0", "7 7", "255 256", "0 1023", "10000 11000"], "int_in int_out", {
     "exclusive_r": lambda s: str(sum(bin(v).count("1") for v in range(ints(s)[0], ints(s)[1]))),
     "endpoints_only": lambda s: str(bin(ints(s)[0]).count("1") + bin(ints(s)[1]).count("1")),
 })

@@ -1,4 +1,4 @@
-"""EsoLang Env Forge: verified, contamination-resistant RL environments and a
+"""EsoLang-Verified: verified, contamination-resistant RL environments and a
 model-free audit toolkit for EsoLang-Bench style unfamiliar-language tasks."""
 
 __version__ = "0.1.0"
